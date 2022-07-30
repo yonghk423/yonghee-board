@@ -71,16 +71,21 @@ const Home = () => {
                             <Title onClick={() => onTitleClick(ele.id)}>{ele.title}</Title>
                             <User>사용자 {ele.userId}</User>
                             {detailPage === true ? 
-                                <div>
-                                    <div>test</div>
-                                    <button onClick={() =>setDetailPage(false)}></button>
-                                </div> : null
+                                    <div>
+                                    {detailData.map((ele) => (
+                                        <div key={ele.id}>
+                                            <div>{ele.name}</div>
+                                            <div>{ele.body}</div>        
+                                        </div>
+                                    ))} 
+                                    <button onClick={() =>setDetailPage(false)}>닫기</button>
+                                    </div>
+                                    : null
                             }        
                         </DataBox>      
                     ))}                                           
             </SubContainer>
-        </Container>
-                 
+        </Container>             
         </>
     )
 }
