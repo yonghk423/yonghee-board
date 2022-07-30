@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components"
 import axios from 'axios';
+import { useMatch, useNavigate } from "react-router-dom";
+const BASE_PATH = "https://jsonplaceholder.typicode.com";
 
 interface ImainData {
     userId: number;
@@ -17,24 +19,37 @@ interface IdetailData {
     body: string;
 }
 
+interface IcommentsData {
+    postId: number;
+    id: number;
+    name: string;
+    email: string;
+    body: string;
+}
+
 const Home = () => {
-    const [mainData, setMainData] = useState<ImainData[]>([]);
-    console.log(mainData);
-    const [detailData, setDetailData] = useState<IdetailData[]>([]);
+    const [postsData, setPostsData] = useState<ImainData[]>([]);
+    const [commentsData, setCommentsData] = useState<IcommentsData[]>([]);
+    // const [detailPage, setDetailPage] = useState(false);
+    // console.log(detailPage);
+    const [detailData, setDetailData] = useState<IdetailData[]>([])
     console.log(detailData);
-    const [detailPage, setDetailPage] = useState(false);
-    console.log(detailPage);
+    const navigate = useNavigate();
+    const dataMatch = useMatch("/posts/:postId");
+    console.log(dataMatch)
     useEffect(() => {
-       getData()
-       getDetailData()
+        getData()
+        
     } , [])
-    
+    useEffect(() => {
+        getDetailData()
+    }, [detailData])
     const getData = async () => {
     try {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
-        console.log(response);
+        const response = await axios.get(`${BASE_PATH}/posts`)
+        // console.log(response);
         const resMainData = await response?.data;
-        setMainData(resMainData);
+        setPostsData(resMainData);
        
     } catch(err) {
         console.log("Error >>", err);
@@ -42,10 +57,10 @@ const Home = () => {
     }
      const getDetailData = async () => {
     try {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/comments')
-        console.log(response);
+        const response = await axios.get(`${BASE_PATH}/comments`)
+        // console.log(response);
         const resDetailData = await response?.data;
-        setDetailData(resDetailData);
+        setCommentsData(resDetailData);
        
     } catch(err) {
         console.log("Error >>", err);
@@ -53,37 +68,32 @@ const Home = () => {
     }
 
     const onTitleClick = (id:number) => {
+        navigate(`/posts/${id}`);
         console.log(id);
-        const data = detailData.filter((ele) => (
+        const data = commentsData.filter((ele) => (
             id === ele?.postId        
         ))
-        console.log(data);
         setDetailData(data);
-        setDetailPage(true);
+        // setDetailPage(true);
     }
 
     return (
         <>
         <Container>
             <SubContainer>            
-                    {mainData.map((ele) => (
+                    {postsData?.map((ele) => (
                         <DataBox key={ele.id}>
                             <Title onClick={() => onTitleClick(ele.id)}>{ele.title}</Title>
-                            <User>사용자 {ele.userId}</User>
-                            {detailPage === true ? 
-                                    <div>
-                                    {detailData.map((ele) => (
-                                        <div key={ele.id}>
-                                            <div>{ele.name}</div>
-                                            <div>{ele.body}</div>        
-                                        </div>
-                                    ))} 
-                                    <button onClick={() =>setDetailPage(false)}>닫기</button>
-                                    </div>
-                                    : null
-                            }        
-                        </DataBox>      
-                    ))}                                           
+                            <User>사용자 {ele.userId}</User>        
+                        </DataBox>       
+                    ))}
+                    {dataMatch ? detailData.map((ele) => (
+                        <div key={ele.id}>
+                            <div>{ele.name}</div>
+                            <div>{ele.body}</div>                                
+                        </div>    
+                    )) : null
+                    }                                                                  
             </SubContainer>
         </Container>             
         </>
