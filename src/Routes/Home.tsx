@@ -9,7 +9,6 @@ interface ImainData {
     id: number;
     title : string;
     body : string;
-
 }
 interface IdetailData {
     postId: number;
