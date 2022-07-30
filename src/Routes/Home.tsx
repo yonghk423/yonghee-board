@@ -1,51 +1,87 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components"
 import axios from 'axios';
+
+interface ImainData {
+    userId: number;
+    id: number;
+    title : string;
+    body : string;
+
+}
+interface IdetailData {
+    postId: number;
+    id: number;
+    name: string;
+    email: string;
+    body: string;
+}
+
 const Home = () => {
-    const [mainData, setMainData] = useState('');
+    const [mainData, setMainData] = useState<ImainData[]>([]);
     console.log(mainData);
+    const [detailData, setDetailData] = useState<IdetailData[]>([]);
+    console.log(detailData);
+    const [detailPage, setDetailPage] = useState(false);
+    console.log(detailPage);
     useEffect(() => {
        getData()
+       getDetailData()
     } , [])
+    
     const getData = async () => {
     try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+        console.log(response);
         const resMainData = await response?.data;
         setMainData(resMainData);
        
     } catch(err) {
         console.log("Error >>", err);
+        }
     }
+     const getDetailData = async () => {
+    try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/comments')
+        console.log(response);
+        const resDetailData = await response?.data;
+        setDetailData(resDetailData);
+       
+    } catch(err) {
+        console.log("Error >>", err);
+        }
     }
+
+    const onTitleClick = (id:number) => {
+        console.log(id);
+        const data = detailData.filter((ele) => (
+            id === ele?.postId        
+        ))
+        console.log(data);
+        setDetailData(data);
+        setDetailPage(true);
+    }
+
     return (
+        <>
         <Container>
-            <SubContainer>
-                <DataBox>          
-                    <Title>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</Title>
-                    <User>작성자 1</User>
-                </DataBox>
-                <DataBox>          
-                    <Title>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</Title>
-                    <User>작성자 1</User>
-                </DataBox>  
-                <DataBox>          
-                    <Title>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</Title>
-                    <User>작성자 1</User>
-                </DataBox>
-                <DataBox>          
-                    <Title>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</Title>
-                    <User>작성자 1</User>
-                </DataBox>
-                <DataBox>          
-                    <Title>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</Title>
-                    <User>작성자 1</User>
-                </DataBox>  
-                <DataBox>          
-                    <Title>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</Title>
-                    <User>작성자 1</User>
-                </DataBox>                      
+            <SubContainer>            
+                    {mainData.map((ele) => (
+                        <DataBox key={ele.id}>
+                            <Title onClick={() => onTitleClick(ele.id)}>{ele.title}</Title>
+                            <User>사용자 {ele.userId}</User>
+                            {detailPage === true ? 
+                                <div>
+                                    <div>test</div>
+                                    <button onClick={() =>setDetailPage(false)}></button>
+                                </div> : null
+                            }        
+                        </DataBox>      
+                    ))}                                           
             </SubContainer>
         </Container>
+                 
+        </>
     )
 }
 
