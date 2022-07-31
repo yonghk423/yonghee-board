@@ -11,21 +11,6 @@ interface IpostsData {
     title : string;
     body : string;
 }
-interface IdetailData {
-    postId: number;
-    id: number;
-    name: string;
-    email: string;
-    body: string;
-}
-
-interface IcommentsData {
-    postId: number;
-    id: number;
-    name: string;
-    email: string;
-    body: string;
-}
 
 const App = () => {
     const [postsData, setPostsData] = useState<IpostsData[]>([]);   
@@ -55,8 +40,14 @@ const App = () => {
                         <Home key={ele.id} {...ele} />
                     ))}
                 </div>
-                }></Route>
-                <Route path="posts/:id" />                             
+                }/>
+                <Route path="/posts/:id" element={
+                <div>
+                    {postsData.map((ele) => (
+                        <Home key={ele.id} {...ele} />
+                    ))}
+                </div>
+                }/>                       
             </Routes>
         </BrowserRouter>
     )

@@ -32,9 +32,9 @@ const Home = (props : Iprops ) => {
     const [commentsData, setCommentsData] = useState<IcommentsData[]>([]);
     const [detailData, setDetailData] = useState<IdetailData[]>([])
     console.log(detailData); 
-    // const navigate = useNavigate();
-    // const dataMatch = useMatch("/posts/:postId");
-    // console.log(dataMatch) 
+    const navigate = useNavigate();
+    const dataMatch = useMatch("/posts/:postId");
+    console.log(dataMatch) 
 
      useEffect(() => {
         getDetailData()
@@ -51,7 +51,7 @@ const Home = (props : Iprops ) => {
         }
     }
     const onTitleClick = (id:number) => {
-        // navigate(`/posts/${id}`);
+        navigate(`/posts/${id}`);
         console.log(id);
         const data = commentsData.filter((ele) => (
             id === ele?.postId        
