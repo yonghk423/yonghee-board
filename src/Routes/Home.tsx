@@ -3,12 +3,7 @@ import styled from "styled-components";
 import axios from 'axios';
 import { useMatch, useNavigate } from "react-router-dom";
 const BASE_PATH = "https://jsonplaceholder.typicode.com";
-interface IpostsData {
-    userId: number;
-    id: number;
-    title : string;
-    body : string;
-}
+
 interface IdetailData {
     postId: number;
     id: number;
@@ -29,7 +24,6 @@ interface Iprops {
     id? : number;
     title? : string;
     body? : string;
-    // onTitleClick? : (id: number) => void | React.ReactNode;
 }
 
 const Home = (props : Iprops ) => {
@@ -40,8 +34,7 @@ const Home = (props : Iprops ) => {
     console.log(detailData); 
     // const navigate = useNavigate();
     // const dataMatch = useMatch("/posts/:postId");
-    // console.log(dataMatch)   
- 
+    // console.log(dataMatch) 
 
      useEffect(() => {
         getDetailData()
