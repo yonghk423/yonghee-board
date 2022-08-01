@@ -35,7 +35,8 @@ const Home = () => {
     }
 
     return (
-        // !postsData.length ? (<div>Loading...</div>) :
+        <>
+        {!postsData.length ? (<div>Loading...</div>) :
         <Container>
             <SubContainer>            
                     {postsData?.map((ele) => (
@@ -46,11 +47,13 @@ const Home = () => {
                     ))}                                                                                  
             </SubContainer>
         </Container>    
+        }
+        </>
     )
 }
 
 const Container = styled.div`
-border: 1px solid black;
+/* border: 1px solid black; */
 `;
 const SubContainer = styled.div`
 margin: 100px;
