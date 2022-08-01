@@ -50,7 +50,7 @@ const Home = () => {
 }
 
 const Container = styled.div`
-border: 1px solid black;
+/* border: 1px solid black; */
 `;
 const SubContainer = styled.div`
 margin: 100px;
