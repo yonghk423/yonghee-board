@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from "styled-components"
 import axios from 'axios';
 import { useMatch, useNavigate } from "react-router-dom";
+import Pagination from '../components/Pagination';
 const BASE_PATH = "https://jsonplaceholder.typicode.com";
 
 interface IpostsData {
@@ -15,7 +16,17 @@ const Home = () => {
     const [postsData, setPostsData] = useState<IpostsData[]>([]);    
     const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(10);
+    const [postsPerPage] = useState(10);
+
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = postsData.slice(indexOfFirstPost, indexOfLastPost);
+    console.log(currentPosts);
+    
+    const paginate = (pageNumber:number) => {
+        console.log(pageNumber);
+        setCurrentPage(pageNumber);
+    }
     useEffect(() => {
         getData()    
     }, [])
@@ -37,13 +48,18 @@ const Home = () => {
     return (     
         <Container>        
             <SubContainer>
-                    {postsData?.map((ele) => (
+                    {currentPosts?.map((ele) => (
                         <DataBox key={ele.id}>
                             <Title onClick={() => onTitleClick(ele.id)}>{ele.title}</Title>
                             <User>사용자 {ele.userId}</User>        
                         </DataBox>       
                     ))}                                                                                                
-            </SubContainer>        
+            </SubContainer>
+            <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={postsData.length}
+            paginate={paginate}
+            />    
         </Container>    
     )
 }
