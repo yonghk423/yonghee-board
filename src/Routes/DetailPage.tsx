@@ -68,9 +68,9 @@ const DetailPage = () => {
     const comments = commentsData.filter((ele) => (
             ItemId === ele?.postId               
         ))
-    console.log(comments);
-    console.log(comments.length);
+    
     return (
+        !postsBody.length && !comments.length ? (<div>loading...</div>) :
         <div>
             <div>
                 {postsBody?.map((ele) => (

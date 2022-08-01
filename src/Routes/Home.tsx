@@ -14,7 +14,6 @@ interface IpostsData {
 const Home = () => {
     const [postsData, setPostsData] = useState<IpostsData[]>([]);    
     const navigate = useNavigate();
-    const [loading, setLoading]= useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
     useEffect(() => {
@@ -25,9 +24,7 @@ const Home = () => {
     try {
         const response = await axios.get(`${BASE_PATH}/posts`)
         const resMainData = await response?.data;
-        setLoading(true);
         setPostsData(resMainData);
-        setLoading(false)
     } catch(err) {
         console.log("Error >>", err);
         }
@@ -38,7 +35,7 @@ const Home = () => {
     }
 
     return (
-        loading ? <div>Loading...</div> :
+        !postsData.length ? (<div>Loading...</div>) :
         <Container>
             <SubContainer>            
                     {postsData?.map((ele) => (
