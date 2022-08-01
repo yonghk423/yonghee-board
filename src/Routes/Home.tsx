@@ -46,7 +46,7 @@ const Home = () => {
                         </DataBox>       
                     ))}                                                                                  
             </SubContainer>
-        </Container>    
+        </Container>
         }
         </>
     )
