@@ -16,6 +16,7 @@ const Home = () => {
     const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         getData()    
     }, [])
@@ -24,6 +25,7 @@ const Home = () => {
     try {
         const response = await axios.get(`${BASE_PATH}/posts`)
         const resMainData = await response?.data;
+        setLoading(false);
         setPostsData(resMainData);
     } catch(err) {
         console.log("Error >>", err);
@@ -34,9 +36,8 @@ const Home = () => {
         navigate(`/posts/${id}`);   
     }
 
-    return (
-        <>
-        {!postsData.length ? (<div>Loading...</div>) :
+    return (    
+        loading ? (<div>Loading...</div>) :
         <Container>
             <SubContainer>            
                     {postsData?.map((ele) => (
@@ -46,9 +47,7 @@ const Home = () => {
                         </DataBox>       
                     ))}                                                                                  
             </SubContainer>
-        </Container>
-        }
-        </>
+        </Container>    
     )
 }
 
