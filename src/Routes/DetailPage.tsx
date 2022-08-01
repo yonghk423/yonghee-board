@@ -43,7 +43,6 @@ const DetailPage = () => {
     const getData = async () => {
     try {
         const response = await axios.get(`${BASE_PATH}/posts`)
-        // console.log(response);
         const resMainData = await response?.data;
         setPostsData(resMainData);
        
