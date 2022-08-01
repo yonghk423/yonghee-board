@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import styled from "styled-components"
 import axios from 'axios';
 import { useMatch, useNavigate } from "react-router-dom";
-import DetailPage from './DetailPage';
 const BASE_PATH = "https://jsonplaceholder.typicode.com";
 
 interface IpostsData {
@@ -11,71 +10,35 @@ interface IpostsData {
     title : string;
     body : string;
 }
-interface IdetailData {
-    postId: number;
-    id: number;
-    name: string;
-    email: string;
-    body: string;
-}
-
-interface IcommentsData {
-    postId: number;
-    id: number;
-    name: string;
-    email: string;
-    body: string;
-}
 
 const Home = () => {
-    const [postsData, setPostsData] = useState<IpostsData[]>([]);
-    const [commentsData, setCommentsData] = useState<IcommentsData[]>([]);    
-    const [detailData, setDetailData] = useState<IdetailData[]>([])
-    console.log(detailData);
+    const [postsData, setPostsData] = useState<IpostsData[]>([]);    
     const navigate = useNavigate();
-    const dataMatch = useMatch("/posts/:postId");
-    console.log(dataMatch)
+    const [loading, setLoading]= useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(10);
     useEffect(() => {
-        getData()
-        
-    } , [])
-    useEffect(() => {
-        getDetailData()
-    }, [detailData])
+        getData()    
+    }, [])
+    
     const getData = async () => {
     try {
         const response = await axios.get(`${BASE_PATH}/posts`)
-        // console.log(response);
         const resMainData = await response?.data;
+        setLoading(true);
         setPostsData(resMainData);
-       
-    } catch(err) {
-        console.log("Error >>", err);
-        }
-    }
-     const getDetailData = async () => {
-    try {
-        const response = await axios.get(`${BASE_PATH}/comments`)
-        // console.log(response);
-        const resDetailData = await response?.data;
-        setCommentsData(resDetailData);
-       
+        setLoading(false)
     } catch(err) {
         console.log("Error >>", err);
         }
     }
 
     const onTitleClick = (id:number) => {
-        navigate(`/posts/${id}`);
-        console.log(id);
-        const data = commentsData.filter((ele) => (
-            id === ele?.postId        
-        ))
-        setDetailData(data);
+        navigate(`/posts/${id}`);   
     }
 
     return (
-        <>
+        loading ? <div>Loading...</div> :
         <Container>
             <SubContainer>            
                     {postsData?.map((ele) => (
@@ -83,11 +46,9 @@ const Home = () => {
                             <Title onClick={() => onTitleClick(ele.id)}>{ele.title}</Title>
                             <User>사용자 {ele.userId}</User>        
                         </DataBox>       
-                    ))}
-                                                                                      
+                    ))}                                                                                  
             </SubContainer>
-        </Container>
-        </>
+        </Container>    
     )
 }
 
@@ -96,7 +57,6 @@ border: 1px solid black;
 `;
 const SubContainer = styled.div`
 margin: 100px;
-/* border: 1px solid black; */
 background-color: rgba(225, 225, 225, 0.2);
 border-radius: 15px;
 box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px     rgba(0, 0, 0, 0.06);  

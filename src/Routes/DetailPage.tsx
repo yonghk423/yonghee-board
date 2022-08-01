@@ -54,7 +54,6 @@ const DetailPage = () => {
      const getDetailData = async () => {
     try {
         const response = await axios.get(`${BASE_PATH}/comments`)
-        // console.log(response);
         const resDetailData = await response?.data;
         setCommentsData(resDetailData);
        
