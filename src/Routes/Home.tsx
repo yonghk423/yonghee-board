@@ -35,19 +35,15 @@ const Home = () => {
     }
 
     return (     
-        <Container>
-            {!postsData.length ? <div>loading...</div>  : 
-            <>
-            <SubContainer>            
+        <Container>        
+            <SubContainer>
                     {postsData?.map((ele) => (
                         <DataBox key={ele.id}>
                             <Title onClick={() => onTitleClick(ele.id)}>{ele.title}</Title>
                             <User>사용자 {ele.userId}</User>        
                         </DataBox>       
-                    ))}                                                                                  
-            </SubContainer>
-            </>
-            }
+                    ))}                                                                                                
+            </SubContainer>        
         </Container>    
     )
 }

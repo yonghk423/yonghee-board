@@ -69,8 +69,6 @@ const DetailPage = () => {
         ))
     
     return (
-        <>
-        {!postsBody.length && !comments.length ? (<div>loading...</div>) :
         <div>
             <div>
                 {postsBody?.map((ele) => (
@@ -89,8 +87,6 @@ const DetailPage = () => {
                 ))}
             </div>
         </div>
-        }
-        </>
     )
 }
 
