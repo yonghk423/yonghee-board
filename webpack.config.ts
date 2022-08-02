@@ -4,6 +4,7 @@ import path from 'path';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'; 
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'; //hot-reloading
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+
 const isDevelopment = process.env.NODE_ENV !== 'production';
 import dotenv from "dotenv";
 dotenv.config();
@@ -82,6 +83,7 @@ const config: webpack.Configuration = {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js',
         publicPath: '/dist/',
+        chunkFilename: "[name].chunk.js"
     }, //출력
     devServer: {
         historyApiFallback: true, // react router
