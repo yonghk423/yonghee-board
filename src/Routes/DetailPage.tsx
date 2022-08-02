@@ -9,13 +9,6 @@ interface IpostsData {
     title : string;
     body : string;
 }
-interface IdetailData {
-    postId: number;
-    id: number;
-    name: string;
-    email: string;
-    body: string;
-}
 
 interface IcommentsData {
     postId: number;
@@ -29,7 +22,6 @@ const DetailPage = () => {
     const ItemId:number = Number(idData.id)
     const [postsData, setPostsData] = useState<IpostsData[]>([]);
     const [commentsData, setCommentsData] = useState<IcommentsData[]>([]);    
-    const [detailData, setDetailData] = useState<IdetailData[]>([])
     
     useEffect(() => {    
         getData()
@@ -37,6 +29,7 @@ const DetailPage = () => {
     useEffect(() => {
         getDetailData()
     }, [])
+
     const getData = async () => {
     try {
         const response = await axios.get(`${BASE_PATH}/posts`)
@@ -57,6 +50,7 @@ const DetailPage = () => {
         console.log("Error >>", err);
         }
     }
+    
     const postsBody = postsData.filter((ele) => (
             ItemId === ele?.id               
         ))

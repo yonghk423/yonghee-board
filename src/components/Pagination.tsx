@@ -14,7 +14,7 @@ const Pagination = (props:Iprops) => {
     return (
     <div>
       <ul>
-        {pageNumbers.map(number => (
+        {pageNumbers?.map(number => (
           <li key={number}>
             <a onClick={() => props.paginate(number)}>
               {number}

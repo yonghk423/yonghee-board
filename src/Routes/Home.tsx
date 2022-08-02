@@ -15,9 +15,9 @@ interface IpostsData {
 const Home = () => {
     const [postsData, setPostsData] = useState<IpostsData[]>([]);    
     const navigate = useNavigate();
+    //---------------------------------pagination----------------------------------------
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);
-
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = postsData.slice(indexOfFirstPost, indexOfLastPost);
@@ -25,7 +25,8 @@ const Home = () => {
     const paginate = useCallback((pageNumber:number) => {
         setCurrentPage(pageNumber)
     }, [currentPage])
-
+    //------------------------------------------------------------------------------------
+    
     useEffect(() => {
         getData()    
     }, [])
