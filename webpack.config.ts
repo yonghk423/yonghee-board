@@ -82,8 +82,8 @@ const config: webpack.Configuration = {
     output : {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js',
-        publicPath: '/dist/',
-        chunkFilename: "[name].chunk.js"
+        publicPath: '/dist/[name].chunk.js',
+        
     }, //출력
     devServer: {
         historyApiFallback: true, // react router
