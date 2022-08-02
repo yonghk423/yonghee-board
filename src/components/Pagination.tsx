@@ -7,24 +7,23 @@ interface Iprops {
 }
 
 const Pagination = (props:Iprops) => {
-    console.log(props)
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(props?.totalPosts / props?.postsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+      pageNumbers.push(i);
+    }
     return (
-    <nav>
-      <ul className='pagination'>
+    <div>
+      <ul>
         {pageNumbers.map(number => (
-          <li key={number} className='page-item'>
-            <a onClick={() => props.paginate(number)} className='page-link'>
+          <li key={number}>
+            <a onClick={() => props.paginate(number)}>
               {number}
             </a>
           </li>
         ))}
       </ul>
-    </nav>
+    </div>
     );
 };
 
-export default Pagination;
+export default React.memo(Pagination);

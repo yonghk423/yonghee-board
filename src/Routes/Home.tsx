@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import styled from "styled-components"
 import axios from 'axios';
 import { useMatch, useNavigate } from "react-router-dom";
@@ -21,12 +21,11 @@ const Home = () => {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = postsData.slice(indexOfFirstPost, indexOfLastPost);
-    console.log(currentPosts);
-    
-    const paginate = (pageNumber:number) => {
-        console.log(pageNumber);
-        setCurrentPage(pageNumber);
-    }
+
+    const paginate = useCallback((pageNumber:number) => {
+        setCurrentPage(pageNumber)
+    }, [currentPage])
+
     useEffect(() => {
         getData()    
     }, [])
@@ -40,11 +39,11 @@ const Home = () => {
         console.log("Error >>", err);
         }
     }
-
-    const onTitleClick = (id:number) => {
+        
+    const onTitleClick = useCallback((id:number) => {
         navigate(`/posts/${id}`);   
-    }
-
+    }, [])
+    
     return (     
         <Container>        
             <SubContainer>
@@ -86,4 +85,4 @@ const User = styled.div`
 border: 1px solid black; 
 margin: 10px;
 `;
-export default Home;
+export default React.memo(Home);

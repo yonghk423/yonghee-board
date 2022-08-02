@@ -27,12 +27,9 @@ interface IcommentsData {
 const DetailPage = () => {
     const idData = useParams()
     const ItemId:number = Number(idData.id)
-    console.log(ItemId);
     const [postsData, setPostsData] = useState<IpostsData[]>([]);
-    console.log(postsData);
     const [commentsData, setCommentsData] = useState<IcommentsData[]>([]);    
     const [detailData, setDetailData] = useState<IdetailData[]>([])
-    console.log(detailData);
     
     useEffect(() => {    
         getData()
@@ -63,7 +60,7 @@ const DetailPage = () => {
     const postsBody = postsData.filter((ele) => (
             ItemId === ele?.id               
         ))
-    console.log(postsBody);
+        
     const comments = commentsData.filter((ele) => (
             ItemId === ele?.postId               
         ))
@@ -90,4 +87,4 @@ const DetailPage = () => {
     )
 }
 
-export default DetailPage;
+export default React.memo(DetailPage);
