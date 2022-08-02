@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import styled from "styled-components"
 import axios from 'axios';
-import { useMatch, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Pagination from '../components/Pagination';
 const BASE_PATH = "https://jsonplaceholder.typicode.com";
 
@@ -26,7 +26,7 @@ const Home = () => {
         setCurrentPage(pageNumber)
     }, [currentPage])
     //------------------------------------------------------------------------------------
-    
+
     useEffect(() => {
         getData()    
     }, [])
