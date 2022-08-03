@@ -1,4 +1,4 @@
-"use strict";(self.webpackChunkcodestates_fe_advanced_course=self.webpackChunkcodestates_fe_advanced_course||[]).push([[793],{9793:(e,t,r)=>{r.r(t),r.d(t,{default:()=>P});var o=r(7294),a=r(8804),n=r(9669),s=r.n(n),l=r(6974);const c=e=>{console.log(e);const t=[];for(let r=1;r<=Math.ceil(e?.totalPosts/e?.postsPerPage);r++)t.push(r);return o.createElement(d,null,o.createElement(p,null,t?.map((t=>o.createElement(u,{key:t},o.createElement(b,{onClick:()=>e.paginate(t)},o.createElement(g,null,t)))))))},i=o.memo(c),d=a.ZP.div`
+"use strict";(self.webpackChunkcodestates_fe_advanced_course=self.webpackChunkcodestates_fe_advanced_course||[]).push([[793],{9793:(e,t,o)=>{o.r(t),o.d(t,{default:()=>P});var r=o(7294),a=o(8804),l=o(9669),n=o.n(l),s=o(6974);const c=e=>{console.log(e);const t=[];console.log(t);for(let o=1;o<=Math.ceil(e?.totalPosts/e?.postsPerPage);o++)t.push(o);return r.createElement(d,null,r.createElement(p,null,t?.map((t=>r.createElement(u,{key:t},r.createElement(g,{onClick:()=>e.paginate(t)},r.createElement(b,null,t)))))))},i=r.memo(c),d=a.ZP.div`
 `,p=a.ZP.div`
 margin: 50px;
 display: flex;
@@ -21,13 +21,13 @@ filter: brightness(60%);
       transition: transform .5s;
       color: #004c8c;
     }
-`,b=a.ZP.div`
 `,g=a.ZP.div`
+`,b=a.ZP.div`
 font-size: 20px;
 font-weight: bolder;
 cursor: pointer;
 
-`,x=()=>{const[e,t]=(0,o.useState)([]),r=(0,l.s0)(),[a,n]=(0,o.useState)(1),[c]=(0,o.useState)(10),d=a*c,p=d-c,u=e.slice(p,d),b=(0,o.useCallback)((e=>{n(e)}),[a]);(0,o.useEffect)((()=>{g()}),[]);const g=async()=>{try{const e=await s().get("https://jsonplaceholder.typicode.com/posts"),r=await(e?.data);t(r)}catch(e){console.log("Error >>",e)}},x=(0,o.useCallback)((e=>{r(`/posts/${e}`)}),[]);return o.createElement(m,null,o.createElement(f,null,u?.map((e=>o.createElement(h,{key:e.id,onClick:()=>x(e.id)},o.createElement(k,null,e.title),o.createElement(v,null,"사용자 ",e.userId))))),o.createElement(i,{postsPerPage:c,totalPosts:e.length,paginate:b}))},m=a.ZP.div`
+`,x=()=>{const[e,t]=(0,r.useState)([]),o=(0,s.s0)(),[a,l]=(0,r.useState)(1),[c]=(0,r.useState)(10),d=a*c,p=d-c,u=e.slice(p,d);console.log(u);const g=(0,r.useCallback)((e=>{console.log(e),l(e)}),[a]);(0,r.useEffect)((()=>{b()}),[]);const b=async()=>{try{const e=await n().get("https://jsonplaceholder.typicode.com/posts"),o=await(e?.data);t(o)}catch(e){console.log("Error >>",e)}},x=(0,r.useCallback)((e=>{o(`/posts/${e}`)}),[]);return r.createElement(m,null,r.createElement(f,null,u?.map((e=>r.createElement(h,{key:e.id,onClick:()=>x(e.id)},r.createElement(k,null,e.title),r.createElement(v,null,"사용자 ",e.userId))))),r.createElement(i,{postsPerPage:c,totalPosts:e.length,paginate:g}))},m=a.ZP.div`
 /* border: 1px solid black; */
 `,f=a.ZP.div`
 margin: 20px;
@@ -56,4 +56,4 @@ font-weight: bolder;
 margin: 10px;
 color:#eceff1;
 font-weight: bolder;
-`,P=o.memo(x)}}]);
+`,P=r.memo(x)}}]);

@@ -21,8 +21,9 @@ const Home = () => {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = postsData.slice(indexOfFirstPost, indexOfLastPost);
-
+    console.log(currentPosts);
     const paginate = useCallback((pageNumber:number) => {
+        console.log(pageNumber);
         setCurrentPage(pageNumber)
     }, [currentPage])
     //------------------------------------------------------------------------------------

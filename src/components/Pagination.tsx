@@ -8,8 +8,9 @@ interface Iprops {
 }
 
 const Pagination = (props:Iprops) => {
-  console.log(props);
-    const pageNumbers = [];
+    console.log(props);
+    const pageNumbers:number[] = [];
+    console.log(pageNumbers);
     for (let i = 1; i <= Math.ceil(props?.totalPosts / props?.postsPerPage); i++) {
       pageNumbers.push(i);
     }
