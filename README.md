@@ -2,7 +2,9 @@
   https://codestates-fe-advanced-course-rho.vercel.app
 - 프로젝트 실행 방법 :
 
-  1)webpack.config.ts로 들어가
+  1)npm install 를 합니다.
+
+  2)webpack.config.ts로 들어간 다음
 
   output : {
   path: path.join(\_\_dirname, 'dist'),
@@ -10,7 +12,7 @@
   publicPath: '/',
   }, 에서
 
-  publicPath: '/' -> publicPath: '/dist/' 변경합니다.
+  publicPath: '/' -> publicPath: '/dist/' 로 변경합니다.
 
   2)npm run build 를 합니다.
 
