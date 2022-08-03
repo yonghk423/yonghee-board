@@ -21,9 +21,7 @@ const Home = () => {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = postsData.slice(indexOfFirstPost, indexOfLastPost);
-    console.log(currentPosts);
     const paginate = useCallback((pageNumber:number) => {
-        console.log(pageNumber);
         setCurrentPage(pageNumber)
     }, [currentPage])
     //------------------------------------------------------------------------------------
@@ -66,7 +64,6 @@ const Home = () => {
 }
 
 const Container = styled.div`
-/* border: 1px solid black; */
 `;
 const SubContainer = styled.div`
 margin: 20px;
@@ -88,13 +85,11 @@ cursor: pointer;
   }
 `;
 const Title = styled.div`
-/* border: 1px solid black; */
 margin: 10px;
 color:#eceff1;
 font-weight: bolder;
 `;
 const User = styled.div`
-/* border: 1px solid black;  */
 margin: 10px;
 color:#eceff1;
 font-weight: bolder;
