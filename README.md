@@ -1,7 +1,9 @@
 - 완성된 GIF 파일 및 배포 링크 :
   https://codestates-fe-advanced-course-rho.vercel.app
 - 프로젝트 실행 방법 :
+
   1)webpack.config.ts로 들어가
+
   output : {
   path: path.join(\_\_dirname, 'dist'),
   filename: '[name].js',
