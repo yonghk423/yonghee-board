@@ -14,7 +14,9 @@
 
   2)npm run build 를 합니다.
 
-  3)웹 브러우저를 통해 localhost:8080 로컬 서버를 실행합니다.
+  3)npm run dev 를 합니다.
+
+  4)웹 브러우저를 통해 localhost:8080 로컬 서버를 실행합니다.
 
 - 사용한 스택 목록 :
   TypeScript, HTML, styled-components, React, axios, Webpack, Loadable Components
