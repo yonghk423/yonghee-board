@@ -82,7 +82,7 @@ const config: webpack.Configuration = {
     output : {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js',
-        publicPath: '/',
+        publicPath: '/dist/',
     }, //출력
     devServer: {
         historyApiFallback: true, // react router
