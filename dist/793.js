@@ -1,4 +1,4 @@
-"use strict";(self.webpackChunkcodestates_fe_advanced_course=self.webpackChunkcodestates_fe_advanced_course||[]).push([[793],{9793:(e,t,r)=>{r.r(t),r.d(t,{default:()=>P});var o=r(7294),a=r(8804),s=r(9669),n=r.n(s),l=r(6974);const c=e=>{console.log(e);const t=[];for(let r=1;r<=Math.ceil(e?.totalPosts/e?.postsPerPage);r++)t.push(r);return o.createElement(d,null,o.createElement(p,null,t?.map((t=>o.createElement(u,{key:t},o.createElement(b,{onClick:()=>e.paginate(t)},o.createElement(g,null,t)))))))},i=o.memo(c),d=a.ZP.div`
+"use strict";(self.webpackChunkcodestates_fe_advanced_course=self.webpackChunkcodestates_fe_advanced_course||[]).push([[793],{9793:(e,t,r)=>{r.r(t),r.d(t,{default:()=>P});var o=r(7294),a=r(8804),n=r(9669),s=r.n(n),l=r(6974);const c=e=>{console.log(e);const t=[];for(let r=1;r<=Math.ceil(e?.totalPosts/e?.postsPerPage);r++)t.push(r);return o.createElement(d,null,o.createElement(p,null,t?.map((t=>o.createElement(u,{key:t},o.createElement(b,{onClick:()=>e.paginate(t)},o.createElement(g,null,t)))))))},i=o.memo(c),d=a.ZP.div`
 `,p=a.ZP.div`
 margin: 50px;
 display: flex;
@@ -27,7 +27,7 @@ font-size: 20px;
 font-weight: bolder;
 cursor: pointer;
 
-`,x=()=>{const[e,t]=(0,o.useState)([]),r=(0,l.s0)(),[a,s]=(0,o.useState)(1),[c]=(0,o.useState)(10),d=a*c,p=d-c,u=e.slice(p,d),b=(0,o.useCallback)((e=>{s(e)}),[a]);(0,o.useEffect)((()=>{g()}),[]);const g=async()=>{try{const e=await n().get("https://jsonplaceholder.typicode.com/posts"),r=await(e?.data);t(r)}catch(e){console.log("Error >>",e)}},x=(0,o.useCallback)((e=>{r(`/posts/${e}`)}),[]);return o.createElement(m,null,o.createElement(f,null,u?.map((e=>o.createElement(h,{key:e.id,onClick:()=>x(e.id)},o.createElement(k,null,e.title),o.createElement(v,null,"사용자 ",e.userId))))),o.createElement(i,{postsPerPage:c,totalPosts:e.length,paginate:b}))},m=a.ZP.div`
+`,x=()=>{const[e,t]=(0,o.useState)([]),r=(0,l.s0)(),[a,n]=(0,o.useState)(1),[c]=(0,o.useState)(10),d=a*c,p=d-c,u=e.slice(p,d),b=(0,o.useCallback)((e=>{n(e)}),[a]);(0,o.useEffect)((()=>{g()}),[]);const g=async()=>{try{const e=await s().get("https://jsonplaceholder.typicode.com/posts"),r=await(e?.data);t(r)}catch(e){console.log("Error >>",e)}},x=(0,o.useCallback)((e=>{r(`/posts/${e}`)}),[]);return o.createElement(m,null,o.createElement(f,null,u?.map((e=>o.createElement(h,{key:e.id,onClick:()=>x(e.id)},o.createElement(k,null,e.title),o.createElement(v,null,"사용자 ",e.userId))))),o.createElement(i,{postsPerPage:c,totalPosts:e.length,paginate:b}))},m=a.ZP.div`
 /* border: 1px solid black; */
 `,f=a.ZP.div`
 margin: 20px;
@@ -55,4 +55,5 @@ font-weight: bolder;
 /* border: 1px solid black;  */
 margin: 10px;
 color:#eceff1;
+font-weight: bolder;
 `,P=o.memo(x)}}]);
