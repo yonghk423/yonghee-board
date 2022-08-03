@@ -1,18 +1,58 @@
-"use strict";(self.webpackChunkcodestates_fe_advanced_course=self.webpackChunkcodestates_fe_advanced_course||[]).push([[793],{9793:(e,t,a)=>{a.r(t),a.d(t,{default:()=>k});var l=a(7294),s=a(8804),r=a(9669),c=a.n(r),n=a(6974);const o=e=>{const t=[];for(let a=1;a<=Math.ceil(e?.totalPosts/e?.postsPerPage);a++)t.push(a);return l.createElement("div",null,l.createElement("ul",null,t?.map((t=>l.createElement("li",{key:t},l.createElement("a",{onClick:()=>e.paginate(t)},t))))))},d=l.memo(o),i=()=>{const[e,t]=(0,l.useState)([]),a=(0,n.s0)(),[s,r]=(0,l.useState)(1),[o]=(0,l.useState)(10),i=s*o,k=i-o,x=e.slice(k,i),E=(0,l.useCallback)((e=>{r(e)}),[s]);(0,l.useEffect)((()=>{P()}),[]);const P=async()=>{try{const e=await c().get("https://jsonplaceholder.typicode.com/posts"),a=await(e?.data);t(a)}catch(e){console.log("Error >>",e)}},f=(0,l.useCallback)((e=>{a(`/posts/${e}`)}),[]);return l.createElement(p,null,l.createElement(u,null,x?.map((e=>l.createElement(m,{key:e.id},l.createElement(b,{onClick:()=>f(e.id)},e.title),l.createElement(g,null,"사용자 ",e.userId))))),l.createElement(d,{postsPerPage:o,totalPosts:e.length,paginate:E}))},p=s.ZP.div`
+"use strict";(self.webpackChunkcodestates_fe_advanced_course=self.webpackChunkcodestates_fe_advanced_course||[]).push([[793],{9793:(e,t,r)=>{r.r(t),r.d(t,{default:()=>P});var o=r(7294),a=r(8804),s=r(9669),n=r.n(s),l=r(6974);const c=e=>{console.log(e);const t=[];for(let r=1;r<=Math.ceil(e?.totalPosts/e?.postsPerPage);r++)t.push(r);return o.createElement(d,null,o.createElement(p,null,t?.map((t=>o.createElement(u,{key:t},o.createElement(b,{onClick:()=>e.paginate(t)},o.createElement(g,null,t)))))))},i=o.memo(c),d=a.ZP.div`
+`,p=a.ZP.div`
+margin: 50px;
+display: flex;
+justify-content: center;
+background-color: rgba(225, 225, 225, 0.2);
+border-radius: 10px;
+box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);  
+`,u=a.ZP.div`
+margin: 10px;
+cursor: pointer;
+filter: brightness(60%);
+    position: relative;        
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+    text-align: center;
+    &:hover {
+      filter: brightness(105%);
+      transform: scale(1.2);
+      transition: transform .5s;
+      color: #004c8c;
+    }
+`,b=a.ZP.div`
+`,g=a.ZP.div`
+font-size: 20px;
+font-weight: bolder;
+cursor: pointer;
+
+`,x=()=>{const[e,t]=(0,o.useState)([]),r=(0,l.s0)(),[a,s]=(0,o.useState)(1),[c]=(0,o.useState)(10),d=a*c,p=d-c,u=e.slice(p,d),b=(0,o.useCallback)((e=>{s(e)}),[a]);(0,o.useEffect)((()=>{g()}),[]);const g=async()=>{try{const e=await n().get("https://jsonplaceholder.typicode.com/posts"),r=await(e?.data);t(r)}catch(e){console.log("Error >>",e)}},x=(0,o.useCallback)((e=>{r(`/posts/${e}`)}),[]);return o.createElement(m,null,o.createElement(f,null,u?.map((e=>o.createElement(h,{key:e.id,onClick:()=>x(e.id)},o.createElement(k,null,e.title),o.createElement(v,null,"사용자 ",e.userId))))),o.createElement(i,{postsPerPage:c,totalPosts:e.length,paginate:b}))},m=a.ZP.div`
 /* border: 1px solid black; */
-`,u=s.ZP.div`
-margin: 100px;
+`,f=a.ZP.div`
+margin: 20px;
+padding: 5px;
 background-color: rgba(225, 225, 225, 0.2);
 border-radius: 15px;
-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px     rgba(0, 0, 0, 0.06);  
-`,m=s.ZP.div`
+box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);  
+`,h=a.ZP.div`
 margin: 10px;
 display: flex;
 justify-content: space-between;
-`,b=s.ZP.div`
-border: 1px solid black;
+justify-items: center;
+background-color: #0277bd;
+border-radius: 10px;
+cursor: pointer;
+&:hover{  
+    background-color : #58a5f0;
+  }
+`,k=a.ZP.div`
+/* border: 1px solid black; */
 margin: 10px;
-`,g=s.ZP.div`
-border: 1px solid black; 
+color:#eceff1;
+font-weight: bolder;
+`,v=a.ZP.div`
+/* border: 1px solid black;  */
 margin: 10px;
-`,k=l.memo(i)}}]);
+color:#eceff1;
+`,P=o.memo(x)}}]);

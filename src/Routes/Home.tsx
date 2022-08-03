@@ -49,8 +49,8 @@ const Home = () => {
         <Container>        
             <SubContainer>
                     {currentPosts?.map((ele) => (
-                        <DataBox key={ele.id}>
-                            <Title onClick={() => onTitleClick(ele.id)}>{ele.title}</Title>
+                        <DataBox key={ele.id} onClick={() => onTitleClick(ele.id)}>
+                            <Title>{ele.title}</Title>
                             <User>사용자 {ele.userId}</User>        
                         </DataBox>       
                     ))}                                                                                                
@@ -68,22 +68,33 @@ const Container = styled.div`
 /* border: 1px solid black; */
 `;
 const SubContainer = styled.div`
-margin: 100px;
+margin: 20px;
+padding: 5px;
 background-color: rgba(225, 225, 225, 0.2);
 border-radius: 15px;
-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px     rgba(0, 0, 0, 0.06);  
+box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);  
 `;
 const DataBox = styled.div`
 margin: 10px;
 display: flex;
 justify-content: space-between;
+justify-items: center;
+background-color: #0277bd;
+border-radius: 10px;
+cursor: pointer;
+&:hover{  
+    background-color : #58a5f0;
+  }
 `;
 const Title = styled.div`
-border: 1px solid black;
+/* border: 1px solid black; */
 margin: 10px;
+color:#eceff1;
+font-weight: bolder;
 `;
 const User = styled.div`
-border: 1px solid black; 
+/* border: 1px solid black;  */
 margin: 10px;
+color:#eceff1;
 `;
 export default React.memo(Home);
