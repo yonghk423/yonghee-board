@@ -8,7 +8,9 @@
   path: path.join(\_\_dirname, 'dist'),
   filename: '[name].js',
   publicPath: '/',
-  }, 에서 publicPath: '/' -> publicPath: '/dist/' 변경합니다.
+  }, 에서
+
+  publicPath: '/' -> publicPath: '/dist/' 변경합니다.
 
   2)npm run build 를 합니다.
 
