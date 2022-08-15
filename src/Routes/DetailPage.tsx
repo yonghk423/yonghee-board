@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import styled from "styled-components"
 import { useParams } from 'react-router-dom';
+import Header from '../components/Header';
 const BASE_PATH = "https://jsonplaceholder.typicode.com";
 
 interface IpostsData {
@@ -61,6 +62,8 @@ const DetailPage = () => {
         ))
     
     return (
+        <>
+        <Header/>
         <Container>
             <SubContainer>
                 {postsBody?.map((ele) => (
@@ -83,6 +86,7 @@ const DetailPage = () => {
                 ))}
             </SubContainer>
         </Container>
+        </>
     )
 }
 

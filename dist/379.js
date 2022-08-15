@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcodestates_fe_advanced_course=self.webpackChunkcodestates_fe_advanced_course||[]).push([[379],{2379:(e,t,a)=>{a.r(t),a.d(t,{default:()=>l});var c=a(7294);const l=()=>c.createElement("div",null,c.createElement("div",null,c.createElement("div",null),c.createElement("input",{type:"email"})))}}]);

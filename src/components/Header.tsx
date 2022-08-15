@@ -6,12 +6,12 @@ const Header = () => {
     const navigate = useNavigate();
 
     const onClick = () => {
-      navigate("/")
+      navigate("/Home")
       
     }
     return (
         <HeaderBox>             
-             <Head style={{ textDecoration: 'none', color: 'white' }} onClick={onClick}>SEB31 yonghee'blog</Head>                       
+             <Head style={{ textDecoration: 'none', color: 'white' }} onClick={onClick}>yonghee'board</Head>                       
         </HeaderBox>
     )
 }

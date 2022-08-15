@@ -3,6 +3,7 @@ import styled from "styled-components"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Pagination from '../components/Pagination';
+import Header from '../components/Header';
 const BASE_PATH = "https://jsonplaceholder.typicode.com";
 
 interface IpostsData {
@@ -44,7 +45,9 @@ const Home = () => {
         navigate(`/posts/${id}`);   
     }, [])
     
-    return (     
+    return (
+        <>
+        <Header/>     
         <Container>        
             <SubContainer>
                     {currentPosts?.map((ele) => (
@@ -59,7 +62,8 @@ const Home = () => {
             totalPosts={postsData.length}
             paginate={paginate}
             />    
-        </Container>    
+        </Container>   
+        </> 
     )
 }
 

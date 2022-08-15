@@ -74,9 +74,7 @@ const container = document.getElementById('app');
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript
 root.render(
     <>
-    <SWRConfig
-    value={{ fetcher:(url:string) => fetch(url).then((response) => response.json())}}
-    >
+    <SWRConfig value={{ fetcher:(url:string) => fetch(url).then((response) => response.json())}}>
     <ThemeProvider theme={theme}>
         <GlobalStyle />
         <App />
