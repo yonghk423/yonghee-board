@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import loadable from '@loadable/component';
+import NotFound from './Routes/NotFound';
 const DetailPage = loadable(() => import('./Routes/DetailPage'));
 const Home = loadable(() => import('./Routes/Home'))
 const Login = loadable(() => import('./Routes/Login'))
@@ -9,10 +10,11 @@ const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login/>}/>
-                <Route path="/SignUp" element={<SignUp/>}/>
-                <Route path="/Home" element={<Home/>}/>
-                <Route path="/posts/:id" element={<DetailPage/>}/>                       
+                <Route path="/" element={<Login />}/>
+                <Route path="/SignUp" element={<SignUp />}/>
+                <Route path="/Home" element={<Home />}/>
+                <Route path="/posts/:id" element={<DetailPage />}/>
+                <Route path="/*" element={<NotFound />}/>                       
             </Routes>
         </BrowserRouter>
     )
